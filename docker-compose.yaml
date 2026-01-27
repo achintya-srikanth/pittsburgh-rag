@@ -1,0 +1,54 @@
+#version: '3.8'
+
+services:
+  # 1. The Vector Database
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+    # OPTIONAL: Comment out 'volumes' if you want the DB to be wiped every time you quit.
+    volumes:
+      - ./qdrant_data:/qdrant/storage
+
+  # 2. Python Backend
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Point to the Qdrant service name defined above
+      - QDRANT_URL=http://qdrant:6333
+      
+      # Point to OLLAMA on your HOST machine
+      # We use host.docker.internal to break out of the container
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    
+    # This section is CRITICAL for Linux/Windows compatibility
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      
+    depends_on:
+      - qdrant
+    volumes:
+      - ./backend:/app/backend
+    # Use 'reload' for development hot-reloading
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    
+  # Database Seeder (runs ONCE to populate the DB)
+  #seed_worker:
+  #  build: ./backend  # Reuses the same image/code as backend
+  #  command: python seed_db.py
+  #  depends_on:
+  #    - backend
+  #  environment:
+  #    # INSIDE the docker network, we talk to "backend", not "localhost"
+  #    - API_URL=http://backend:8000/ingest 
+  #  profiles: ["seed"]  # Optional: Prevents it running every time unless you ask
+
+  # 3. Streamlit Frontend
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend

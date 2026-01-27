@@ -1,0 +1,88 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+venv.bak/
+
+# Python env settings
+.python-version
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.pytest_cache/
+tox/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Pyre
+.pyre/
+
+# Mypy
+.mypy_cache/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Secrets and environment
+.env
+*.env
+secrets.json
+*.pem
+*.key
+
+# Docker
+docker-compose.override.yml
+*.env
+
+# Qdrant persistent data (ignore local vector DB files)
+qdrant_data/
+
+# Python packaging
+Pipfile.lock
+poetry.lock
+
+# Misc
+.venv/
+.cache/
+__pycache__/
+*.egg
+*.egg-info/

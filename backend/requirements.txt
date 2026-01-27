@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+requests
+python-multipart
+beautifulsoup4
+langchain
+langchain-community
+langchain-core
+langchain-qdrant
+langchain-huggingface
+langchain-ollama
+langchain-classic
+langchain-text-splitters
+qdrant-client
+sentence-transformers
+watchfiles
