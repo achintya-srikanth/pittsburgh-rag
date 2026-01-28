@@ -40,23 +40,6 @@ A full-stack RAG (Retrieval-Augmented Generation) application that allows users 
 
 4. Ask away! Ingest more URLs for more specific searches.
 
-### File Structure:
-.
-├── backend/
-│   ├── services/
-│   │   ├── ingestion.py
-│   │   └── rag.py
-│   ├── main.py
-│   ├── seed_db.py
-│   ├── requirements.txt
-│   └── Dockerfile
-├── frontend/
-│   ├── app.py
-│   └── Dockerfile
-├── docker-compose.yaml
-├── seed_urls.json
-└── .gitignore
-
 ### 🗺️ Roadmap & Future Improvements
 
 To move this from a prototype to a production-grade system, the following features are planned:
